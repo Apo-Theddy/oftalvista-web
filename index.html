@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oftalvista Web</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero" id="inicio" aria-label="Principal">
+        <div class="hero__background" aria-hidden="true"></div>
+
+        <header class="site-header" aria-label="Navegación principal">
+          <a class="brand" href="#inicio" aria-label="Oftalvista inicio">
+            <img class="brand__mark" src="./assets/figma-brand-mark-v2.svg" alt="">
+            <img class="brand__wordmark" src="./assets/figma-wordmark-v2.png" alt="">
+          </a>
+
+          <nav class="main-nav" id="main-navigation" aria-label="Secciones">
+            <a class="main-nav__link main-nav__link--active" href="#inicio">Inicio</a>
+            <a class="main-nav__link" href="#servicios">Servicios</a>
+            <a class="main-nav__link" href="#resultados">Testimonios</a>
+            <a class="main-nav__link" href="#preguntas">Preguntas</a>
+            <a class="main-nav__link" href="#blog">Blog</a>
+          </nav>
+
+          <div class="header-actions">
+            <a class="icon-button" href="tel:+51000000000" aria-label="Llamar a Oftalvista">
+              <img src="./assets/figma-icon-call-v2.svg" alt="">
+            </a>
+            <a class="appointment-button" href="#contacto">
+              <img src="./assets/figma-icon-calendar-v2.svg" alt="">
+              <span>Reserva tu cita</span>
+            </a>
+          </div>
+
+          <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </header>
+
+        <div class="hero__content">
+          <div class="hero-copy">
+            <h1>
+              Cuidamos la salud de tu <span>visión</span> con especialistas en oftalmología
+            </h1>
+            <p>
+              Diagnóstico, prevención y tratamiento para la salud visual de niños, adultos y adultos mayores.
+            </p>
+
+            <div class="stats" aria-label="Indicadores de confianza">
+              <article class="stat">
+                <span class="stat__icon"><img src="./assets/figma-icon-happy-v2.svg" alt=""></span>
+                <span class="stat__text">
+                  <strong>200+</strong>
+                  <small>Pacientes Felices</small>
+                </span>
+              </article>
+              <article class="stat">
+                <span class="stat__icon"><img src="./assets/figma-icon-eye-v2.svg" alt=""></span>
+                <span class="stat__text">
+                  <strong>50+</strong>
+                  <small>Cirugías Exitosas</small>
+                </span>
+              </article>
+              <article class="stat">
+                <span class="stat__icon"><img src="./assets/figma-icon-star-v2.svg" alt=""></span>
+                <span class="stat__text">
+                  <strong>15+</strong>
+                  <small>Años de experiencia</small>
+                </span>
+              </article>
+            </div>
+          </div>
+
+          <aside class="doctor-card" aria-label="Doctor destacado">
+            <img class="doctor-card__photo" src="./assets/figma-doctor-v2.png" alt="Dr. Aníbal Olivera">
+            <div class="doctor-card__body">
+              <h2>DR. Anibal Olivera</h2>
+              <p>Médico y cirujano oftalmólogo</p>
+              <a href="#doctor">Conoce a tu Doctor</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <aside class="address-strip" aria-label="Dirección">
+        Av. Juan Pardo de Zela 437, Lince 15046
+      </aside>
+
+      <section class="section services-section" id="servicios" aria-labelledby="services-title">
+        <div class="section-title">
+          <h2 id="services-title">Nuestros servicios a tu disposición</h2>
+          <p>
+            Escuchamos, comprendemos y ofrecemos un cuidado oftalmológico de clase mundial que ha devuelto la visión a miles de pacientes.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <img src="./assets/figma-service-cataratas.png" alt="Consulta para cirugía de cataratas">
+            <div class="service-card__body">
+              <h3>Cirugía de Cataratas</h3>
+              <p>Se reemplaza el cristalino opaco del ojo por una lente artificial para restaurar la visión.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <img src="./assets/figma-service-pterigion.png" alt="Explicación médica de pterigión o carnosidad ocular">
+            <div class="service-card__body">
+              <h3>Cirugía de Pterigión</h3>
+              <p>Se remueve la carnosidad ocular para aliviar molestias y mejorar la superficie del ojo.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <img src="./assets/figma-service-parpados.png" alt="Evaluación para cirugía de párpados">
+            <div class="service-card__body">
+              <h3>Cirugía de Parpados</h3>
+              <p>Elimina el exceso de piel en los párpados, mejorando el campo visual y la apariencia.</p>
+            </div>
+          </article>
+        </div>
+
+        <a class="pill-button" href="#todos-servicios">
+          <span>Ver todos los servicios</span>
+          <img src="./assets/figma-icon-arrow-v2.svg" alt="">
+        </a>
+      </section>
+
+      <section class="personalized-section" aria-labelledby="personalized-title">
+        <div class="personalized-card">
+          <img src="./assets/figma-cta-bg.png" alt="" aria-hidden="true">
+          <div class="personalized-card__content">
+            <h2 id="personalized-title">Atención Personalizada para Cada Paciente</h2>
+            <p>
+              Desde la consulta hasta la recuperación, escuchamos tus necesidades y diseñamos planes de tratamiento adaptados a tu estilo de vida y salud visual.
+            </p>
+            <a class="white-cta-button" href="#contacto">
+              <span class="white-cta-button__icon"><img src="./assets/figma-icon-call-white.svg" alt=""></span>
+              <span>Agendar una cita</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section results-section" id="resultados" aria-labelledby="results-title">
+        <div class="section-title">
+          <h2 id="results-title">Antes y después</h2>
+          <p>Descubre los resultados reales de nuestros tratamientos en la vida de nuestros pacientes.</p>
+        </div>
+
+        <div class="comparison-grid">
+          <article class="result-card">
+            <div class="comparison" data-comparison style="--position: 50%;">
+              <img class="comparison__image" src="./assets/figma-beforeafter-before-2.png" alt="Antes de cirugía de pterigión">
+              <div class="comparison__after" aria-hidden="true">
+                <img src="./assets/case-left-after.jpg" alt="">
+              </div>
+              <div class="comparison__divider" aria-hidden="true"></div>
+              <div class="comparison__handle" aria-hidden="true">
+                <span class="comparison__arrow comparison__arrow--left"></span>
+                <span class="comparison__arrow comparison__arrow--right"></span>
+              </div>
+              <input class="comparison__range" type="range" min="0" max="100" value="50" aria-label="Deslizar antes y después de cirugía de pterigión">
+            </div>
+            <div class="result-card__body">
+              <h3>Cirugía de Pterigión</h3>
+              <p>Removimos con éxito un pterigión avanzado, devolviendo al paciente una córnea sana y una visión más clara.</p>
+            </div>
+          </article>
+
+          <article class="result-card">
+            <div class="comparison" data-comparison style="--position: 50%;">
+              <img class="comparison__image" src="./assets/figma-beforeafter-after.png" alt="Antes de cirugía de pterigión">
+              <div class="comparison__after" aria-hidden="true">
+                <img src="./assets/case-right-after.jpg" alt="">
+              </div>
+              <div class="comparison__divider" aria-hidden="true"></div>
+              <div class="comparison__handle" aria-hidden="true">
+                <span class="comparison__arrow comparison__arrow--left"></span>
+                <span class="comparison__arrow comparison__arrow--right"></span>
+              </div>
+              <input class="comparison__range" type="range" min="0" max="100" value="50" aria-label="Deslizar segundo caso antes y después de cirugía de pterigión">
+            </div>
+            <div class="result-card__body">
+              <h3>Cirugía de Pterigión</h3>
+              <p>Removimos satisfactoriamente la carnosidad del paciente, devolviendo una visión nítida y comodidad ocular.</p>
+            </div>
+          </article>
+        </div>
+
+        <a class="pill-button" href="#casos">
+          <span>Ver más casos de exito</span>
+          <img src="./assets/figma-icon-arrow-v2.svg" alt="">
+        </a>
+      </section>
+
+      <footer class="site-footer" id="contacto">
+        <div class="site-footer__inner">
+          <section class="footer-brand" aria-label="Oftalvista">
+            <a class="footer-logo" href="#inicio" aria-label="Oftalvista inicio">
+              <img class="footer-logo__mark" src="./assets/figma-brand-mark-footer.svg" alt="">
+              <img class="footer-logo__wordmark" src="./assets/figma-wordmark-v2.png" alt="">
+            </a>
+            <p>
+              En Oftalvista, nos especializamos en el cuidado integral de la salud visual, ofreciendo atención profesional y tecnología de vanguardia para el diagnóstico y tratamiento de enfermedades oculares.
+            </p>
+            <h3>Lunes a Sabado</h3>
+            <div class="footer-row">
+              <img src="./assets/figma-icon-time.svg" alt="">
+              <span>de 9:00 a.m a 7:30 p.m</span>
+            </div>
+          </section>
+
+          <section class="footer-column" aria-labelledby="footer-contact-title">
+            <h3 id="footer-contact-title">Información de contacto</h3>
+            <a class="footer-row" href="https://wa.me/51978662299">
+              <img src="./assets/figma-icon-whatsapp.svg" alt="">
+              <span>+51 978662299</span>
+            </a>
+            <a class="footer-row footer-row--address" href="https://maps.google.com/?q=Av.%20Juan%20Pardo%20de%20Zela%20437%2C%20Lince%2015046">
+              <img src="./assets/figma-icon-location.svg" alt="">
+              <span>Av. Juan Pardo de Zela 437, Lince 15046</span>
+            </a>
+          </section>
+
+          <nav class="footer-column footer-nav" aria-label="Navegación del pie de página">
+            <h3>Navegación</h3>
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#resultados">Testimonios</a>
+            <a href="#preguntas">Preguntas</a>
+            <a href="#blog">Blog</a>
+          </nav>
+
+          <section class="footer-column footer-social" aria-labelledby="footer-social-title">
+            <h3 id="footer-social-title">Síguenos en</h3>
+            <a class="footer-row" href="#">
+              <img src="./assets/figma-icon-tiktok.svg" alt="">
+              <span>Tiktok</span>
+            </a>
+            <a class="footer-row" href="#">
+              <img src="./assets/figma-icon-instagram.svg" alt="">
+              <span>Instagram</span>
+            </a>
+            <a class="footer-row" href="#">
+              <img src="./assets/figma-icon-facebook.svg" alt="">
+              <span>Facebook</span>
+            </a>
+          </section>
+        </div>
+      </footer>
+
+      <div class="subfooter">
+        <p>Diseñado y desarrollado por <a href="#">Diego Mendez</a></p>
+      </div>
+    </main>
+  </body>
+</html>
