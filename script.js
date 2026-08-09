@@ -1,7 +1,23 @@
 const comparisons = document.querySelectorAll("[data-comparison]");
 const header = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelectorAll(".main-nav__link");
+const revealSections = document.querySelectorAll(".reveal-section");
+
+document.documentElement.classList.add("has-scroll-reveal");
+
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
+
+  revealSections.forEach((section) => revealObserver.observe(section));
+} else {
+  revealSections.forEach((section) => section.classList.add("is-visible"));
+}
 
 comparisons.forEach((comparison) => {
   const range = comparison.querySelector(".comparison__range");
@@ -69,30 +85,6 @@ const updateHeaderState = () => {
   header.classList.toggle("site-header--scrolled", window.scrollY > 24);
 };
 
-const updateActiveNavigation = () => {
-  const sections = [...navLinks]
-    .map((link) => {
-      const id = link.getAttribute("href");
-      const section = id?.startsWith("#") ? document.querySelector(id) : null;
-      return section ? { link, section } : null;
-    })
-    .filter(Boolean);
-
-  if (!sections.length) return;
-
-  const checkpoint = window.scrollY + window.innerHeight * 0.38;
-  let active = sections[0];
-
-  sections.forEach((item) => {
-    if (item.section.offsetTop <= checkpoint) {
-      active = item;
-    }
-  });
-
-  navLinks.forEach((link) => link.classList.remove("main-nav__link--active"));
-  active.link.classList.add("main-nav__link--active");
-};
-
 menuToggle?.addEventListener("click", () => {
   const isOpen = header.classList.toggle("site-header--menu-open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
@@ -121,13 +113,10 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
 window.addEventListener("scroll", () => {
   updateHeaderState();
-  updateActiveNavigation();
 }, { passive: true });
 
 window.addEventListener("resize", () => {
   updateHeaderState();
-  updateActiveNavigation();
 });
 
 updateHeaderState();
-updateActiveNavigation();
