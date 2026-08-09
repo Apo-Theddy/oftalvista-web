@@ -93,7 +93,7 @@
       </aside>
 
       <section class="section services-section" id="servicios" aria-labelledby="services-title">
-        <div class="section-title">
+        <div class="section-title section-title--split">
           <h2 id="services-title">Nuestros servicios a tu disposición</h2>
           <p>
             Escuchamos, comprendemos y ofrecemos un cuidado oftalmológico de clase mundial que ha devuelto la visión a miles de pacientes.
@@ -101,51 +101,44 @@
         </div>
 
         <div class="services-grid">
-          <article class="service-card">
-            <img src="./assets/figma-service-cataratas.png" alt="Consulta para cirugía de cataratas">
+          <a class="service-card service-card--link" href="./cirugia-de-cataratas.html" aria-label="Ver página de cirugía de cataratas">
+            <div class="service-card__media">
+              <img src="./assets/figma-service-cataratas.png" alt="Consulta para cirugía de cataratas">
+              <span class="service-card__arrow"><img src="./assets/figma-icon-arrow-v2.svg" alt=""></span>
+            </div>
             <div class="service-card__body">
               <h3>Cirugía de Cataratas</h3>
-              <p>Se reemplaza el cristalino opaco del ojo por una lente artificial para restaurar la visión.</p>
+              <p>Es un procedimiento seguro y altamente efectivo que consiste en retirar el cristalino natural del ojo, que se ha vuelto opaco con el tiempo.</p>
             </div>
-          </article>
+          </a>
 
-          <article class="service-card">
-            <img src="./assets/figma-service-pterigion.png" alt="Explicación médica de pterigión o carnosidad ocular">
+          <a class="service-card service-card--link" href="./cirugia-de-pterigion.html" aria-label="Ver página de cirugía de pterigión">
+            <div class="service-card__media">
+              <img src="./assets/figma-service-pterigion.png" alt="Explicación médica de pterigión o carnosidad ocular">
+              <span class="service-card__arrow"><img src="./assets/figma-icon-arrow-v2.svg" alt=""></span>
+            </div>
             <div class="service-card__body">
               <h3>Cirugía de Pterigión</h3>
-              <p>Se remueve la carnosidad ocular para aliviar molestias y mejorar la superficie del ojo.</p>
+              <p>La cirugía consiste en la extirpación cuidadosa de este tejido anómalo, seguida de una técnica de reconstrucción de la superficie ocular.</p>
             </div>
-          </article>
+          </a>
 
-          <article class="service-card">
-            <img src="./assets/figma-service-parpados.png" alt="Evaluación para cirugía de párpados">
-            <div class="service-card__body">
-              <h3>Cirugía de Parpados</h3>
-              <p>Elimina el exceso de piel en los párpados, mejorando el campo visual y la apariencia.</p>
+          <a class="service-card service-card--link" href="./cirugia-de-parpados.html" aria-label="Ver página de cirugía de párpados">
+            <div class="service-card__media">
+              <img src="./assets/figma-service-parpados.png" alt="Evaluación para cirugía de párpados">
+              <span class="service-card__arrow"><img src="./assets/figma-icon-arrow-v2.svg" alt=""></span>
             </div>
-          </article>
+            <div class="service-card__body">
+              <h3>Cirugía de Párpados</h3>
+              <p>Es un procedimiento que corrige el exceso de piel, grasa o flacidez en los párpados superiores e inferiores, ya sea por razones estéticas o funcionales.</p>
+            </div>
+          </a>
         </div>
 
         <a class="pill-button" href="#todos-servicios">
           <span>Ver todos los servicios</span>
           <img src="./assets/figma-icon-arrow-v2.svg" alt="">
         </a>
-      </section>
-
-      <section class="personalized-section" aria-labelledby="personalized-title">
-        <div class="personalized-card">
-          <img src="./assets/figma-cta-bg.png" alt="" aria-hidden="true">
-          <div class="personalized-card__content">
-            <h2 id="personalized-title">Atención Personalizada para Cada Paciente</h2>
-            <p>
-              Desde la consulta hasta la recuperación, escuchamos tus necesidades y diseñamos planes de tratamiento adaptados a tu estilo de vida y salud visual.
-            </p>
-            <a class="white-cta-button" href="#contacto">
-              <span class="white-cta-button__icon"><img src="./assets/figma-icon-call-white.svg" alt=""></span>
-              <span>Agendar una cita</span>
-            </a>
-          </div>
-        </div>
       </section>
 
       <section class="section results-section" id="resultados" aria-labelledby="results-title">
@@ -200,6 +193,82 @@
         </a>
       </section>
 
+      <section class="section blog-section" id="blog" aria-labelledby="blog-title">
+        <div class="section-title section-title--split">
+          <h2 id="blog-title">Información para cuidar tu salud visual</h2>
+          <p>Consejos, recomendaciones y contenido especializado de nuestros profesionales para ayudarte a cuidar tu visión.</p>
+        </div>
+
+        <div class="blog-layout">
+          <a class="blog-featured-card" href="./blog/examen-de-la-vista.html" aria-label="Leer artículo: Cada cuánto tiempo debo realizarme un examen de la vista">
+            <img src="./assets/figma-service-cataratas.png" alt="Paciente en consulta oftalmológica">
+            <div class="blog-featured-card__overlay"></div>
+            <div class="blog-featured-card__content">
+              <span>Salud visual</span>
+              <h3>¿Cada cuánto tiempo debo realizarme un examen de la vista?</h3>
+            </div>
+          </a>
+
+          <div class="blog-list">
+            <a class="blog-card" href="./blog/examen-de-la-vista.html">
+              <img src="./assets/figma-service-cataratas.png" alt="Consulta oftalmológica">
+              <div class="blog-card__content">
+                <span>Salud visual</span>
+                <h3>¿Cada cuánto tiempo debo realizarme un examen de la vista?</h3>
+                <small>Leer más <img src="./assets/figma-icon-arrow-v2.svg" alt=""></small>
+              </div>
+            </a>
+
+            <a class="blog-card" href="./blog/senales-visitar-oftalmologo.html">
+              <img src="./assets/figma-service-parpados.png" alt="Evaluación ocular">
+              <div class="blog-card__content">
+                <span>Salud visual</span>
+                <h3>5 señales de que necesitas visitar al oftalmólogo</h3>
+                <small>Leer más <img src="./assets/figma-icon-arrow-v2.svg" alt=""></small>
+              </div>
+            </a>
+
+            <a class="blog-card" href="./blog/cataratas-sintomas-causas-tratamiento.html">
+              <img src="./assets/figma-service-pterigion.png" alt="Material de educación visual">
+              <div class="blog-card__content">
+                <span>Enfermedades oculares</span>
+                <h3>Cataratas: síntomas, causas y tratamiento</h3>
+                <small>Leer más <img src="./assets/figma-icon-arrow-v2.svg" alt=""></small>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section shorts-section" aria-labelledby="shorts-title">
+        <div class="section-title section-title--split">
+          <h2 id="shorts-title">Tu salud visual, en pocos minutos</h2>
+          <p>Consejos prácticos y respuestas a las preguntas más frecuentes sobre salud visual.</p>
+        </div>
+
+        <div class="shorts-grid">
+          <iframe src="https://www.youtube.com/embed/NEfO0L9JvHU?rel=0&amp;playsinline=1&amp;origin=https%3A%2F%2Foftalvista.com.pe&amp;widget_referrer=https%3A%2F%2Foftalvista.com.pe" title="Short de Oftalvista sobre salud visual" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/E5elHJH2zqM?rel=0&amp;playsinline=1&amp;origin=https%3A%2F%2Foftalvista.com.pe&amp;widget_referrer=https%3A%2F%2Foftalvista.com.pe" title="Short de Oftalvista con recomendación oftalmológica" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/sS3pW2PPohs?rel=0&amp;playsinline=1&amp;origin=https%3A%2F%2Foftalvista.com.pe&amp;widget_referrer=https%3A%2F%2Foftalvista.com.pe" title="Short de Oftalvista con consejo de salud visual" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section class="personalized-section" aria-labelledby="personalized-title">
+        <div class="personalized-card">
+          <img src="./assets/figma-cta-bg.png" alt="" aria-hidden="true">
+          <div class="personalized-card__content">
+            <h2 id="personalized-title">Atención Personalizada para Cada Paciente</h2>
+            <p>
+              Desde la consulta hasta la recuperación, escuchamos tus necesidades y diseñamos planes de tratamiento adaptados a tu estilo de vida y salud visual.
+            </p>
+            <a class="white-cta-button" href="#contacto">
+              <span class="white-cta-button__icon"><img src="./assets/figma-icon-call-white.svg" alt=""></span>
+              <span>Agendar una cita</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <footer class="site-footer" id="contacto">
         <div class="site-footer__inner">
           <section class="footer-brand" aria-label="Oftalvista">
@@ -219,7 +288,7 @@
 
           <section class="footer-column" aria-labelledby="footer-contact-title">
             <h3 id="footer-contact-title">Información de contacto</h3>
-            <a class="footer-row" href="https://wa.me/51978662299">
+            <a class="footer-row" href="https://wa.me/51978662299?text=Buenos%20d%C3%ADas%2C%20quisiera%20mas%20informaci%C3%B3n%20para%20una%20consulta%20oftalmol%C3%B3gica." target="_blank" rel="noopener">
               <img src="./assets/figma-icon-whatsapp.svg" alt="">
               <span>+51 978662299</span>
             </a>
@@ -253,12 +322,28 @@
               <span>Facebook</span>
             </a>
           </section>
+
+          <nav class="footer-column footer-legal" aria-label="Legal">
+            <h3>Legal</h3>
+            <a href="./terminos-y-condiciones.html">Términos y condiciones</a>
+            <a href="./politica-de-privacidad.html">Política de Privacidad</a>
+          </nav>
         </div>
       </footer>
 
       <div class="subfooter">
         <p>Diseñado y desarrollado por <a href="#">Diego Mendez</a></p>
       </div>
+
+      <a
+        class="whatsapp-float"
+        href="https://wa.me/51978662299?text=Buenos%20d%C3%ADas%2C%20quisiera%20mas%20informaci%C3%B3n%20para%20una%20consulta%20oftalmol%C3%B3gica."
+        target="_blank"
+        rel="noopener"
+        aria-label="Escríbenos por WhatsApp"
+      >
+        <img src="./assets/figma-icon-whatsapp.svg" alt="">
+      </a>
     </main>
   </body>
 </html>
