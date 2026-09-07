@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="./styles.css">
     <script src="./script.js" defer></script>
   </head>
-  <body>
+  <body class="home-page">
+    <div class="page-loader" data-page-loader aria-label="Cargando Oftalvista">
+      <div class="page-loader__mark"><img src="./assets/figma-brand-mark-v2.svg" alt=""></div>
+      <p class="page-loader__tagline">Cuidamos tu visión, mejoramos tu vida.</p>
+      <span class="page-loader__line" aria-hidden="true"></span>
+    </div>
     <main class="page-shell">
       <section class="hero" id="inicio" aria-label="Principal">
         <div class="hero__background" aria-hidden="true"></div>
@@ -20,10 +25,10 @@
 
           <nav class="main-nav" id="main-navigation" aria-label="Secciones">
             <a class="main-nav__link main-nav__link--active" href="#inicio">Inicio</a>
-            <a class="main-nav__link" href="#servicios">Servicios</a>
+            <a class="main-nav__link" href="./Servicios.html">Servicios</a>
             <a class="main-nav__link" href="#resultados">Testimonios</a>
-            <a class="main-nav__link" href="#preguntas">Preguntas</a>
-            <a class="main-nav__link" href="#blog">Blog</a>
+            <a class="main-nav__link" href="./preguntas.html">Preguntas</a>
+            <a class="main-nav__link" href="./blog.html">Blog</a>
           </nav>
 
           <div class="header-actions">
@@ -201,7 +206,7 @@
 
         <div class="blog-layout">
           <a class="blog-featured-card" href="./blog/examen-de-la-vista.html" aria-label="Leer artículo: Cada cuánto tiempo debo realizarme un examen de la vista">
-            <img src="./assets/figma-service-cataratas.png" alt="Paciente en consulta oftalmológica">
+            <img src="./assets/blog/examen-vista.png" alt="Paciente en consulta oftalmológica">
             <div class="blog-featured-card__overlay"></div>
             <div class="blog-featured-card__content">
               <span>Salud visual</span>
@@ -211,7 +216,7 @@
 
           <div class="blog-list">
             <a class="blog-card" href="./blog/examen-de-la-vista.html">
-              <img src="./assets/figma-service-cataratas.png" alt="Consulta oftalmológica">
+              <img src="./assets/blog/examen-vista.png" alt="Consulta oftalmológica">
               <div class="blog-card__content">
                 <span>Salud visual</span>
                 <h3>¿Cada cuánto tiempo debo realizarme un examen de la vista?</h3>
@@ -220,7 +225,7 @@
             </a>
 
             <a class="blog-card" href="./blog/senales-visitar-oftalmologo.html">
-              <img src="./assets/figma-service-parpados.png" alt="Evaluación ocular">
+              <img src="./assets/blog/senales-oftalmologo.png" alt="Evaluación ocular">
               <div class="blog-card__content">
                 <span>Salud visual</span>
                 <h3>5 señales de que necesitas visitar al oftalmólogo</h3>
@@ -229,7 +234,7 @@
             </a>
 
             <a class="blog-card" href="./blog/cataratas-sintomas-causas-tratamiento.html">
-              <img src="./assets/figma-service-pterigion.png" alt="Material de educación visual">
+              <img src="./assets/blog/cataratas.png" alt="Material de educación visual">
               <div class="blog-card__content">
                 <span>Enfermedades oculares</span>
                 <h3>Cataratas: síntomas, causas y tratamiento</h3>
@@ -324,10 +329,10 @@
           <nav class="footer-column footer-nav" aria-label="Navegación del pie de página">
             <h3>Navegación</h3>
             <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
+            <a href="./Servicios.html">Servicios</a>
             <a href="#resultados">Testimonios</a>
-            <a href="#preguntas">Preguntas</a>
-            <a href="#blog">Blog</a>
+            <a href="./preguntas.html">Preguntas</a>
+            <a href="./blog.html">Blog</a>
           </nav>
 
           <section class="footer-column footer-social" aria-labelledby="footer-social-title">

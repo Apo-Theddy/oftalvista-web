@@ -2,6 +2,65 @@ const comparisons = document.querySelectorAll("[data-comparison]");
 const header = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const revealSections = document.querySelectorAll(".reveal-section");
+const pageLoader = document.querySelector("[data-page-loader]");
+const serviceFilters = document.querySelectorAll(".services-filter");
+const serviceCards = document.querySelectorAll("[data-service-category]");
+const socialProfiles = {
+  tiktok: "https://www.tiktok.com/@cmoftalvista",
+  instagram: "https://www.instagram.com/oftalvista.oliveros/",
+  facebook: "https://www.facebook.com/profile.php?id=100064055949475"
+};
+
+document.querySelectorAll(".footer-social a").forEach((link) => {
+  const label = link.textContent.trim().toLowerCase();
+  const profile = socialProfiles[label];
+  if (!profile) return;
+  link.href = profile;
+  link.target = "_blank";
+  link.rel = "noopener";
+});
+
+const isBlogArticle = window.location.pathname.includes("/blog/");
+const internalPaths = {
+  preguntas: isBlogArticle ? "../preguntas.html" : "./preguntas.html",
+  servicios: isBlogArticle ? "../Servicios.html" : "./Servicios.html",
+  testimonios: isBlogArticle ? "../testimonios.html" : "./testimonios.html"
+};
+
+document.querySelectorAll(".main-nav__link, .footer-nav a").forEach((link) => {
+  const label = link.textContent.trim().toLowerCase();
+  if (internalPaths[label]) link.href = internalPaths[label];
+});
+
+const hidePageLoader = () => {
+  pageLoader?.classList.add("is-hidden");
+  window.setTimeout(() => pageLoader?.remove(), 320);
+};
+
+if (pageLoader) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    hidePageLoader();
+  } else {
+    window.setTimeout(hidePageLoader, 760);
+  }
+}
+
+serviceFilters.forEach((filter) => {
+  filter.addEventListener("click", () => {
+    const selected = filter.textContent.trim().toLowerCase();
+    serviceFilters.forEach((item) => {
+      const isActive = item === filter;
+      item.classList.toggle("services-filter--active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
+
+    serviceCards.forEach((card) => {
+      const category = card.dataset.serviceCategory;
+      const showCard = selected === "todos" || category === selected;
+      card.hidden = !showCard;
+    });
+  });
+});
 
 document.documentElement.classList.add("has-scroll-reveal");
 
