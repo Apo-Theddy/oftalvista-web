@@ -1,5 +1,7 @@
+.git
+.vercel
 .env
+.env.*
 public/uploads/*
 !public/uploads/.gitkeep
-.vercel
-.env*
+!.dockerignore

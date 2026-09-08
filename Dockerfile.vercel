@@ -1,0 +1,41 @@
+FROM php:8.3-apache
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libpq-dev libxml2-dev libonig-dev \
+    && docker-php-ext-install pdo_pgsql dom mbstring opcache \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
+    && a2enmod rewrite headers expires \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /var/www/html
+
+# Apache expands PORT from the runtime environment supplied by Vercel.
+ENV APP_ENV=production \
+    PORT=8080 \
+    APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+RUN printf 'Listen ${PORT}\n' > /etc/apache2/ports.conf \
+    && sed -ri 's!<VirtualHost \*:80>!<VirtualHost *:${PORT}>!; s!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf \
+    && cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+    && printf 'expose_php=Off\nlog_errors=On\nerror_log=/proc/self/fd/2\nsession.use_strict_mode=1\nsession.use_only_cookies=1\n' > "$PHP_INI_DIR/conf.d/security.ini"
+
+COPY docker/apache.conf /etc/apache2/conf-available/oftalvista.conf
+COPY docker/certs/supabase-ca.crt /usr/local/share/ca-certificates/supabase-ca.crt
+RUN a2enconf oftalvista
+
+# Explicit copies keep local environment files and development tools out.
+COPY app/ ./app/
+COPY resources/ ./resources/
+COPY public/ ./public/
+COPY database/ ./database/
+COPY bin/setup.php ./bin/setup.php
+COPY bootstrap.php ./bootstrap.php
+
+RUN mkdir -p public/uploads \
+    && chown -R www-data:www-data public/uploads
+
+EXPOSE 8080
+
+# Initialize the external database separately, never on each cold start.
+CMD ["apache2-foreground"]

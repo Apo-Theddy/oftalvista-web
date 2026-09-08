@@ -1,23 +1,27 @@
 <?php
 declare(strict_types=1);
 
-require dirname(__DIR__) . '/bootstrap.php';
+require_once dirname(__DIR__) . '/bootstrap.php';
 
 use Oftalvista\Core\Config;
 use Oftalvista\Core\Database;
 use Oftalvista\Support\HtmlSanitizer;
 
+// Remote content initialization must not create or reset an administrator.
+$contentOnly = PHP_SAPI === 'cli' && in_array('--content-only', $argv ?? [], true);
 $password = Config::get('ADMIN_PASSWORD');
 $email = filter_var(Config::get('ADMIN_EMAIL', 'admin@oftalvista.local'), FILTER_VALIDATE_EMAIL);
-if (!$email || strlen($password) < 12) {
+if (!$contentOnly && (!$email || strlen($password) < 12)) {
     fwrite(STDERR, "ADMIN_EMAIL debe ser válido y ADMIN_PASSWORD debe tener al menos 12 caracteres.\n");
     exit(1);
 }
 
 $pdo = Database::connection();
-$hash = password_hash($password, PASSWORD_ARGON2ID);
-$admin = $pdo->prepare('INSERT INTO admin_users (email, password_hash) VALUES (:email, :hash) ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash, active = TRUE, updated_at = NOW()');
-$admin->execute(['email' => $email, 'hash' => $hash]);
+if (!$contentOnly) {
+    $hash = password_hash($password, PASSWORD_ARGON2ID);
+    $admin = $pdo->prepare('INSERT INTO admin_users (email, password_hash) VALUES (:email, :hash) ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash, active = TRUE, updated_at = NOW()');
+    $admin->execute(['email' => $email, 'hash' => $hash]);
+}
 
 $count = (int) $pdo->query('SELECT COUNT(*) FROM posts')->fetchColumn();
 if ($count === 0) {
@@ -61,4 +65,4 @@ if ($count === 0) {
     }
 }
 
-fwrite(STDOUT, "Base de datos y administrador preparados.\n");
+fwrite(STDOUT, $contentOnly ? "Contenido inicial preparado.\n" : "Base de datos y administrador preparados.\n");

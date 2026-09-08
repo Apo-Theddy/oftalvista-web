@@ -14,7 +14,7 @@ final class Database
     {
         if (self::$connection) return self::$connection;
 
-        $dsn = sprintf('pgsql:host=%s;port=%s;dbname=%s', Config::get('DB_HOST', 'postgres'), Config::get('DB_PORT', '5432'), Config::get('DB_NAME', 'oftalvista'));
+        $dsn = sprintf('pgsql:host=%s;port=%s;dbname=%s;connect_timeout=10', Config::get('DB_HOST', 'postgres'), Config::get('DB_PORT', '5432'), Config::get('DB_NAME', 'oftalvista'));
         self::$connection = new PDO($dsn, Config::get('DB_USER', 'oftalvista'), Config::get('DB_PASSWORD'), [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
