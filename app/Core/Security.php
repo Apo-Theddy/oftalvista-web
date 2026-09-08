@@ -28,14 +28,23 @@ final class Security
 
     public static function csrfToken(): string
     {
-        self::startSession();
-        return $_SESSION['csrf'] ??= bin2hex(random_bytes(32));
+        $issuedAt = time();
+        $nonce = bin2hex(random_bytes(24));
+        $payload = $issuedAt . '.' . $nonce;
+        $signature = hash_hmac('sha256', $payload, Config::get('APP_KEY'));
+        return $payload . '.' . $signature;
     }
 
     public static function validateCsrf(): bool
     {
-        self::startSession();
-        return isset($_POST['_csrf'], $_SESSION['csrf']) && hash_equals($_SESSION['csrf'], (string) $_POST['_csrf']);
+        $token = (string) ($_POST['_csrf'] ?? '');
+        $parts = explode('.', $token);
+        if (count($parts) !== 3 || !ctype_digit($parts[0]) || !preg_match('/^[a-f0-9]{48}$/', $parts[1])) return false;
+        $issuedAt = (int) $parts[0];
+        if ($issuedAt < time() - 1800 || $issuedAt > time() + 60) return false;
+        $payload = $parts[0] . '.' . $parts[1];
+        $expected = hash_hmac('sha256', $payload, Config::get('APP_KEY'));
+        return hash_equals($expected, $parts[2]);
     }
 
     public static function clientIp(): string

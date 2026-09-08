@@ -6,6 +6,7 @@ putenv('APP_URL=http://localhost:8080');
 require dirname(__DIR__) . '/bootstrap.php';
 
 use Oftalvista\Core\Jwt;
+use Oftalvista\Core\Security;
 use Oftalvista\Support\HtmlSanitizer;
 use Oftalvista\Support\PostValidator;
 
@@ -28,6 +29,15 @@ $test('JWT manipulado es rechazado', static function () use ($assert): void {
     try { Jwt::verify(substr($token, 0, -1) . ($token[-1] === 'a' ? 'b' : 'a')); }
     catch (RuntimeException) { return; }
     $assert(false, 'Se aceptó un JWT manipulado');
+});
+
+$test('CSRF firmado no depende de la sesión y rechaza manipulación', static function () use ($assert): void {
+    $token = Security::csrfToken();
+    $_POST['_csrf'] = $token;
+    $assert(Security::validateCsrf());
+    $_POST['_csrf'] = substr($token, 0, -1) . ($token[-1] === 'a' ? 'b' : 'a');
+    $assert(!Security::validateCsrf());
+    unset($_POST['_csrf']);
 });
 
 $test('Sanitizador elimina XSS y conserva contenido permitido', static function () use ($assert): void {

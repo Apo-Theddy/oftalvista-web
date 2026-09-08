@@ -1,6 +1,6 @@
 # Oftalvista Web + CMS
 
-Sitio público en PHP 8.3 con un panel administrativo para publicaciones y contenido editable. Usa PostgreSQL como fuente de datos y Redis para el caché del blog, rate limiting y revocación de sesiones JWT.
+Sitio público en PHP 8.3 con un panel administrativo para publicaciones y contenido editable. Usa PostgreSQL como fuente de datos; el despliegue en Vercel no requiere Redis.
 
 ## Inicio rápido
 
@@ -46,7 +46,7 @@ La estructura completa y la guía para agregar páginas están en [docs/project-
 ## Seguridad aplicada
 
 - Contraseñas con Argon2id y rehash automático.
-- JWT HS256 firmado con `APP_KEY`, expiración de 8 horas, cookie `HttpOnly`/`SameSite=Strict` y revocación en Redis al cerrar sesión.
+- JWT HS256 firmado con `APP_KEY`, expiración de 8 horas y cookie `HttpOnly`/`SameSite=Strict`.
 - Protección CSRF en toda mutación administrativa.
 - Bloqueo temporal tras cinco intentos fallidos por combinación de correo e IP.
 - PDO con consultas preparadas y emulación desactivada.
@@ -115,12 +115,10 @@ sin crear ni restablecer administradores usa `php bin/setup.php --content-only`.
 **Limitaciones pendientes del CMS:** Vercel no conserva el sistema de archivos
 entre instancias. Las imágenes nuevas de `public/uploads/` necesitan una
 integración con almacenamiento externo (por ejemplo, Blob o S3) antes de usar
-las subidas en producción. El cliente Redis actual solo configura `REDIS_HOST`
-y `REDIS_PORT`, sin autenticación; para un Redis administrado que exija
-credenciales hay que ampliar `app/Core/Cache.php`. Sin Redis no funcionan el
-rate limiting ni la revocación de sesiones respaldados por ese servicio.
-Las sesiones PHP usadas por CSRF también se guardan localmente; hay que
-configurar un almacén compartido para que funcionen entre distintas instancias.
+las subidas en producción. Redis está desactivado en el despliegue de Vercel;
+el caché del blog y el rate limiting no se usan actualmente. Los formularios
+usan tokens CSRF firmados por `APP_KEY` con caducidad de 30 minutos, así que
+editar y eliminar no dependen de una sesión local compartida.
 
 ## Pruebas
 
