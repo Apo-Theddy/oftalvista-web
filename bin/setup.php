@@ -11,8 +11,8 @@ use Oftalvista\Support\HtmlSanitizer;
 $contentOnly = PHP_SAPI === 'cli' && in_array('--content-only', $argv ?? [], true);
 $password = Config::get('ADMIN_PASSWORD');
 $email = filter_var(Config::get('ADMIN_EMAIL', 'admin@oftalvista.local'), FILTER_VALIDATE_EMAIL);
-if (!$contentOnly && (!$email || strlen($password) < 12)) {
-    fwrite(STDERR, "ADMIN_EMAIL debe ser válido y ADMIN_PASSWORD debe tener al menos 12 caracteres.\n");
+if (!$contentOnly && (!$email || strlen($password) < 8)) {
+    fwrite(STDERR, "ADMIN_EMAIL debe ser válido y ADMIN_PASSWORD debe tener al menos 8 caracteres.\n");
     exit(1);
 }
 

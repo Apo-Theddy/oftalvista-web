@@ -72,7 +72,7 @@ Referencia: [contenedores en Vercel](https://vercel.com/kb/guide/does-vercel-sup
    `PGSSLMODE=require` (o `verify-full` con los certificados del proveedor).
 3. Inicializa el administrador y las publicaciones una vez desde la imagen,
    usando un archivo privado de variables con los valores anteriores y
-   `ADMIN_EMAIL` / `ADMIN_PASSWORD` (mínimo 12 caracteres):
+   `ADMIN_EMAIL` / `ADMIN_PASSWORD` (mínimo 8 caracteres; usa una contraseña más larga en producción):
 
    ```bash
    docker build -f Dockerfile.vercel -t oftalvista-vercel .
