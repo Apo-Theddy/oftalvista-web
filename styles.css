@@ -1495,6 +1495,18 @@ html.has-scroll-reveal .reveal-section.is-visible {
 .testimonials-videos__embed { aspect-ratio: 9 / 16; background: #e2e2e2; border-radius: 15px; min-height: 340px; overflow: hidden; }
 .testimonials-videos__embed iframe { border: 0; display: block; height: 100%; width: 100%; }
 
+@media (max-width: 900px) {
+  .testimonials-videos__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .testimonials-page__intro { padding: 74px 16px 52px; }
+  .testimonials-page__cases { gap: 38px; grid-template-columns: 1fr; max-width: 480px; }
+  .testimonials-videos { padding: 0 16px 58px; }
+  .testimonials-videos__grid { gap: 14px; grid-template-columns: 1fr; margin: 0 auto; max-width: 320px; }
+  .testimonials-videos__embed { min-height: 0; }
+}
+
 .blog-section,
 .shorts-section {
   background: var(--surface);

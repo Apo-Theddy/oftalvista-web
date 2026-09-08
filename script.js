@@ -10,6 +10,17 @@ const socialProfiles = {
   instagram: "https://www.instagram.com/oftalvista.oliveros/",
   facebook: "https://www.facebook.com/profile.php?id=100064055949475"
 };
+const whatsappAppointmentUrl = "https://wa.me/51978662299?text=Buenos%20d%C3%ADas%2C%20quisiera%20mas%20informaci%C3%B3n%20para%20una%20consulta%20oftalmol%C3%B3gica.";
+
+document.querySelectorAll('.icon-button[href^="tel:"]').forEach((link) => {
+  link.href = "tel:+51978662299";
+});
+
+document.querySelectorAll(".appointment-button, .cataract-signs a, .white-cta-button").forEach((link) => {
+  link.href = whatsappAppointmentUrl;
+  link.target = "_blank";
+  link.rel = "noopener";
+});
 
 document.querySelectorAll(".footer-social a").forEach((link) => {
   const label = link.textContent.trim().toLowerCase();
@@ -20,17 +31,43 @@ document.querySelectorAll(".footer-social a").forEach((link) => {
   link.rel = "noopener";
 });
 
-const isBlogArticle = window.location.pathname.includes("/blog/");
-const internalPaths = {
-  preguntas: isBlogArticle ? "../preguntas.html" : "./preguntas.html",
-  servicios: isBlogArticle ? "../Servicios.html" : "./Servicios.html",
-  testimonios: isBlogArticle ? "../testimonios.html" : "./testimonios.html"
+document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+  const rel = new Set((link.getAttribute("rel") || "").split(/\s+/).filter(Boolean));
+  rel.add("noopener");
+  rel.add("noreferrer");
+  link.setAttribute("rel", [...rel].join(" "));
+});
+
+document.querySelectorAll('iframe[src*="google.com/maps"]').forEach((frame) => {
+  frame.setAttribute("referrerpolicy", "no-referrer");
+});
+
+document.querySelectorAll('.subfooter a[href="#"]').forEach((link) => {
+  const credit = document.createElement("span");
+  credit.textContent = link.textContent;
+  link.replaceWith(credit);
+});
+
+const navigationBase = window.location.pathname.includes("/blog/") ? ".." : ".";
+const navigationDestinations = {
+  servicios: `${navigationBase}/Servicios.html`,
+  resultados: `${navigationBase}/testimonios.html`,
+  preguntas: `${navigationBase}/preguntas.html`
 };
 
-document.querySelectorAll(".main-nav__link, .footer-nav a").forEach((link) => {
-  const label = link.textContent.trim().toLowerCase();
-  if (internalPaths[label]) link.href = internalPaths[label];
+document.querySelectorAll(".main-nav a, .footer-nav a").forEach((link) => {
+  const href = link.getAttribute("href") || "";
+  const section = Object.keys(navigationDestinations).find((key) => href.endsWith(`#${key}`));
+  if (section) link.setAttribute("href", navigationDestinations[section]);
 });
+
+if (!document.querySelector('link[rel="canonical"]')) {
+  const canonical = document.createElement("link");
+  canonical.rel = "canonical";
+  const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
+  canonical.href = `https://oftalvista.com.pe${currentPath}`;
+  document.head.append(canonical);
+}
 
 const hidePageLoader = () => {
   pageLoader?.classList.add("is-hidden");
@@ -137,6 +174,7 @@ const smoothScrollTo = (targetY, duration = 620) => {
 const closeMobileMenu = () => {
   header?.classList.remove("site-header--menu-open");
   menuToggle?.setAttribute("aria-expanded", "false");
+  menuToggle?.setAttribute("aria-label", "Abrir menú");
 };
 
 const updateHeaderState = () => {
@@ -147,6 +185,7 @@ const updateHeaderState = () => {
 menuToggle?.addEventListener("click", () => {
   const isOpen = header.classList.toggle("site-header--menu-open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
 });
 
 document.querySelectorAll('a[href^="#"]').forEach((link) => {

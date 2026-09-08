@@ -3,9 +3,36 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Oftalvista Web</title>
+    <meta name="description" content="Clínica oftalmológica en Lince, Lima. Atención especializada para el cuidado de tu visión, consultas y cirugías oculares.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://oftalvista.com.pe/">
+    <title>Oftalvista | Clínica oftalmológica en Lima</title>
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
     <link rel="stylesheet" href="./styles.css">
     <script src="./script.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalClinic",
+        "name": "Oftalvista",
+        "url": "https://oftalvista.com.pe/",
+        "telephone": "+51978662299",
+        "logo": "https://oftalvista.com.pe/assets/favicon.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Juan Pardo de Zela 437",
+          "addressLocality": "Lince",
+          "addressRegion": "Lima",
+          "postalCode": "15046",
+          "addressCountry": "PE"
+        },
+        "sameAs": [
+          "https://www.tiktok.com/@cmoftalvista",
+          "https://www.instagram.com/oftalvista.oliveros/",
+          "https://www.facebook.com/profile.php?id=100064055949475"
+        ]
+      }
+    </script>
   </head>
   <body class="home-page">
     <div class="page-loader" data-page-loader aria-label="Cargando Oftalvista">
@@ -26,7 +53,7 @@
           <nav class="main-nav" id="main-navigation" aria-label="Secciones">
             <a class="main-nav__link main-nav__link--active" href="#inicio">Inicio</a>
             <a class="main-nav__link" href="./Servicios.html">Servicios</a>
-            <a class="main-nav__link" href="#resultados">Testimonios</a>
+            <a class="main-nav__link" href="./testimonios.html">Testimonios</a>
             <a class="main-nav__link" href="./preguntas.html">Preguntas</a>
             <a class="main-nav__link" href="./blog.html">Blog</a>
           </nav>
@@ -155,9 +182,9 @@
         <div class="comparison-grid">
           <article class="result-card">
             <div class="comparison" data-comparison style="--position: 50%;">
-              <img class="comparison__image" src="./assets/figma-beforeafter-before-2.png" alt="Antes de cirugía de pterigión">
+              <img class="comparison__image" src="./assets/case-before-pterigion-web.jpg" alt="Antes de cirugía de pterigión" loading="lazy" decoding="async">
               <div class="comparison__after" aria-hidden="true">
-                <img src="./assets/case-left-after.jpg" alt="">
+                <img src="./assets/case-after-pterigion-web.jpg" alt="" loading="lazy" decoding="async">
               </div>
               <div class="comparison__divider" aria-hidden="true"></div>
               <div class="comparison__handle" aria-hidden="true">
@@ -174,9 +201,9 @@
 
           <article class="result-card">
             <div class="comparison" data-comparison style="--position: 50%;">
-              <img class="comparison__image" src="./assets/figma-beforeafter-after.png" alt="Antes de cirugía de pterigión">
+              <img class="comparison__image" src="./assets/case-before-cataratas-web.jpg" alt="Antes de cirugía de cataratas" loading="lazy" decoding="async">
               <div class="comparison__after" aria-hidden="true">
-                <img src="./assets/case-right-after.jpg" alt="">
+                <img src="./assets/case-after-cataratas-web.jpg" alt="" loading="lazy" decoding="async">
               </div>
               <div class="comparison__divider" aria-hidden="true"></div>
               <div class="comparison__handle" aria-hidden="true">
@@ -215,11 +242,11 @@
           </a>
 
           <div class="blog-list">
-            <a class="blog-card" href="./blog/examen-de-la-vista.html">
-              <img src="./assets/blog/examen-vista.png" alt="Consulta oftalmológica">
+            <a class="blog-card" href="./blog/ojo-seco-causas-sintomas.html">
+              <img src="./assets/blog/ojo-seco.jpg" alt="Aplicación de gotas para el tratamiento del ojo seco">
               <div class="blog-card__content">
                 <span>Salud visual</span>
-                <h3>¿Cada cuánto tiempo debo realizarme un examen de la vista?</h3>
+                <h3>Ojo seco: sus causas, síntomas y cómo tratarlo</h3>
                 <small>Leer más <img src="./assets/figma-icon-arrow-v2.svg" alt=""></small>
               </div>
             </a>
@@ -330,7 +357,7 @@
             <h3>Navegación</h3>
             <a href="#inicio">Inicio</a>
             <a href="./Servicios.html">Servicios</a>
-            <a href="#resultados">Testimonios</a>
+            <a href="./testimonios.html">Testimonios</a>
             <a href="./preguntas.html">Preguntas</a>
             <a href="./blog.html">Blog</a>
           </nav>
